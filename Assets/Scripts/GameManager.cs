@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public bool isSoundOn = true;
     public bool isMusicOn = true;
 
+    [Header("-----Player Settings-----")]
+    public float playerMovementSpeed = 1f;
+    public DG.Tweening.Ease playerEasyType = DG.Tweening.Ease.Flash;
     public Color playerColorRed = Color.red;
     public Color playerColorGreen = Color.green;
     public Color player3ColorBlue = Color.cyan;

@@ -10,6 +10,13 @@ public class BoardManager : MonoBehaviour
     public Vector2[] jumpNumbers; // x: piece number, y: to jump piece number
     public Vector2[] piecesPositions;
 
+
+    public static BoardManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         InitializePieces();
@@ -39,7 +46,7 @@ public class BoardManager : MonoBehaviour
             // Jump Details
             foreach (var item in jumpNumbers)
             {
-                if (i+1 == item.x)
+                if (i + 1 == item.x)
                 {
                     _piece.hasJump = true;
                     _piece.jumpToNumber = (int)item.y;
@@ -55,7 +62,7 @@ public class BoardManager : MonoBehaviour
             // Picture
             foreach (var item in picturesNumbers)
             {
-                if (i+1 == item)
+                if (i + 1 == item)
                 {
                     _piece.hasPicture = true;
                     break;

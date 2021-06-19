@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
+    public GameObject playerPrefab;
+    public Transform playerParent;
+    public Vector2 startPosition;
     public Image timer;
     public Image borderImage;
 
@@ -21,13 +24,18 @@ public class PlayerInfo : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     public void SetPlayer(Sprite _image, string _name)
     {
-        playerImage.sprite = _image;
+        //playerImage.sprite = _image;
         playerName.text = _name;
+        Player _player = Instantiate(playerPrefab, playerParent).GetComponent<Player>();
+        _player.gameObject.name = _name;
+        _player.GetComponent<Image>().color = playerColor;
+        _player.transform.localPosition = BoardManager.Instance.piecesPositions[0];
+        _player.playerInfo = this;
     }
 
     void Update()

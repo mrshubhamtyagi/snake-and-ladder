@@ -31,7 +31,7 @@ public class BoardScreen : MonoBehaviour
     void Start()
     {
         diceButton = diceImage.GetComponent<Button>();
-        SetBoardSizeBaseOnScreenResolution(Screen.currentResolution);
+        //SetBoardSizeBaseOnScreenResolution(Screen.currentResolution);
         DeInitializeGame();
     }
 
@@ -49,20 +49,29 @@ public class BoardScreen : MonoBehaviour
         {
             case 2:
                 player1.gameObject.SetActive(true);
+                player1.SetPlayer(null, "Player 1");
                 player2.gameObject.SetActive(true);
+                player2.SetPlayer(null, "Player 2");
                 break;
 
             case 3:
                 player1.gameObject.SetActive(true);
+                player1.SetPlayer(null, "Player 1");
                 player2.gameObject.SetActive(true);
+                player2.SetPlayer(null, "Player 2");
                 player3.gameObject.SetActive(true);
+                player3.SetPlayer(null, "Player 3");
                 break;
 
             case 4:
                 player1.gameObject.SetActive(true);
+                player1.SetPlayer(null, "Player 1");
                 player2.gameObject.SetActive(true);
+                player2.SetPlayer(null, "Player 2");
                 player3.gameObject.SetActive(true);
+                player3.SetPlayer(null, "Player 3");
                 player4.gameObject.SetActive(true);
+                player4.SetPlayer(null, "Player 4");
                 break;
         }
     }
