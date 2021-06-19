@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class PlayerInfo : MonoBehaviour
 {
     public Image timer;
     public Image borderImage;

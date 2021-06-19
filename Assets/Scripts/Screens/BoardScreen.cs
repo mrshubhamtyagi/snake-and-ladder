@@ -8,10 +8,10 @@ public class BoardScreen : MonoBehaviour
     [SerializeField] private GameObject board;
 
     [Header("-----Players-----")]
-    public Player player1;
-    public Player player2;
-    public Player player3;
-    public Player player4;
+    public PlayerInfo player1;
+    public PlayerInfo player2;
+    public PlayerInfo player3;
+    public PlayerInfo player4;
 
     [Header("-----Dice-----")]
     public Image diceImage;

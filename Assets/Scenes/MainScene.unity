@@ -708,6 +708,7 @@ GameObject:
   - component: {fileID: 94808726}
   - component: {fileID: 94808728}
   - component: {fileID: 94808727}
+  - component: {fileID: 94808729}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -772,6 +773,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94808725}
   m_CullTransparentMesh: 1
+--- !u!114 &94808729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94808725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd340ad6aa7e0e4081f5f82c5375fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardPiecePrefab: {fileID: 7548405772511200639, guid: 78854078baa0da74eb3b27c783da1925, type: 3}
+  totalPieces: 72
+  picturesNumbers: 0b00000011000000190000002100000029000000340000003c000000410000004400000047000000
+  jumpNumbers:
+  - {x: 3, y: 11}
+  - {x: 5, y: 17}
+  - {x: 7, y: 25}
+  - {x: 13, y: 33}
+  - {x: 19, y: 41}
+  - {x: 32, y: 60}
+  - {x: 36, y: 52}
+  - {x: 45, y: 68}
+  - {x: 53, y: 65}
+  piecesPositions:
+  - {x: -440, y: -770}
+  - {x: -320, y: -770}
+  - {x: -200, y: -770}
+  - {x: -85, y: -770}
+  - {x: 36, y: -770}
+  - {x: 154, y: -770}
+  - {x: 272, y: -770}
+  - {x: 390, y: -770}
+  - {x: 390, y: -575}
+  - {x: 272, y: -575}
+  - {x: 154, y: -575}
+  - {x: 36, y: -575}
+  - {x: -85, y: -575}
+  - {x: -200, y: -575}
+  - {x: -320, y: -575}
+  - {x: -440, y: -575}
+  - {x: -440, y: -380}
+  - {x: -320, y: -380}
+  - {x: -200, y: -380}
+  - {x: -85, y: -380}
+  - {x: 36, y: -380}
+  - {x: 154, y: -380}
+  - {x: 272, y: -380}
+  - {x: 390, y: -380}
+  - {x: 390, y: -188}
+  - {x: 272, y: -188}
+  - {x: 154, y: -188}
+  - {x: 36, y: -188}
+  - {x: -85, y: -188}
+  - {x: -200, y: -188}
+  - {x: -320, y: -188}
+  - {x: -440, y: -188}
+  - {x: -440, y: 8}
+  - {x: -320, y: 8}
+  - {x: -200, y: 8}
+  - {x: -85, y: 8}
+  - {x: 36, y: 8}
+  - {x: 154, y: 8}
+  - {x: 272, y: 8}
+  - {x: 390, y: 8}
+  - {x: 390, y: 202}
+  - {x: 272, y: 202}
+  - {x: 154, y: 202}
+  - {x: 36, y: 202}
+  - {x: -85, y: 202}
+  - {x: -200, y: 202}
+  - {x: -320, y: 202}
+  - {x: -440, y: 202}
+  - {x: -440, y: 400}
+  - {x: -320, y: 400}
+  - {x: -200, y: 400}
+  - {x: -85, y: 400}
+  - {x: 36, y: 400}
+  - {x: 154, y: 400}
+  - {x: 272, y: 400}
+  - {x: 390, y: 400}
+  - {x: 390, y: 590}
+  - {x: 272, y: 590}
+  - {x: 154, y: 590}
+  - {x: 36, y: 590}
+  - {x: -85, y: 590}
+  - {x: -200, y: 590}
+  - {x: -320, y: 590}
+  - {x: -440, y: 590}
+  - {x: -440, y: 788}
+  - {x: -320, y: 788}
+  - {x: -200, y: 788}
+  - {x: -85, y: 788}
+  - {x: 36, y: 788}
+  - {x: 154, y: 788}
+  - {x: 272, y: 788}
+  - {x: 390, y: 788}
 --- !u!1 &96399867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,7 +2816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &410066960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2809,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashScreen: {fileID: 497460083}
-  splashScreenTimer: 1
+  splashScreenTimer: 3
   homeScreen: {fileID: 410066959}
   boardScreen: {fileID: 365783392}
 --- !u!1 &443555671
@@ -3370,7 +3469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &497460084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12955,7 +13054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2104119166}
   m_Layer: 5
-  m_Name: Players
+  m_Name: PlayersInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
