@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
@@ -44,6 +42,7 @@ public class HomeScreen : MonoBehaviour
 
     public void Profile_Click(Transform _transform)
     {
+        GameManager.Instance.audioManager.PlayBubbleSound();
         UIManager.Instance.ButtonTween(_transform);
         UIManager.Instance.popupManager.ShowProfilePopup();
     }
@@ -51,6 +50,7 @@ public class HomeScreen : MonoBehaviour
 
     public void Settings_Click(Transform _transform)
     {
+        GameManager.Instance.audioManager.PlayBubbleSound();
         UIManager.Instance.ButtonTween(_transform);
         UIManager.Instance.popupManager.ShowSettingsPopup();
     }
@@ -58,6 +58,7 @@ public class HomeScreen : MonoBehaviour
 
     public void Play_Click(Transform _transform)
     {
+        GameManager.Instance.audioManager.PlayBubbleSound();
         GameManager.Instance.boardScreen.InitializeGame();
         UIManager.Instance.ButtonTween(_transform);
         UIManager.Instance.screenManager.HideHomeScreen();

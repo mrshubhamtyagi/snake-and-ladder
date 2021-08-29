@@ -16,12 +16,12 @@ public class BoardPiece : MonoBehaviour
 
     void Start()
     {
-
+        SetPieceInfo();
     }
 
     public void SetPieceInfo()
     {
-
+        pieceNumber = transform.GetSiblingIndex() + 1;
     }
 
 
@@ -33,10 +33,12 @@ public class BoardPiece : MonoBehaviour
             totalPlayersOnThisPiece++;
 
             Player _player = collision.gameObject.GetComponent<Player>();
-
+            _player.currentPieceNumber = pieceNumber;
             if (isLastPiece)
             {
-                print("Game Over");
+                print("Game Over -> " + _player.name + " wins");
+                GameManager.Instance.audioManager.PlayCongratsSound();
+                UIManager.Instance.popupManager.ShowCongratsPopup();
                 return;
             }
 
@@ -69,6 +71,7 @@ public class BoardPiece : MonoBehaviour
         else
         {
             print("Picture Case");
+            GameManager.Instance.audioManager.PlayPictureSound();
 
         }
     }

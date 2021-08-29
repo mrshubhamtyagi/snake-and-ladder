@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 21492721}
   - component: {fileID: 21492720}
   m_Layer: 5
-  m_Name: P2
+  m_Name: PlayerInfo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,13 +252,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 9027215757393332909, guid: dd89981f5cb74c94a9081cae81258ffd, type: 3}
   playerParent: {fileID: 461916140}
-  startPosition: {x: 0, y: 0}
-  timer: {fileID: 670093871}
+  startPosition: {x: -405, y: -950}
+  playerDisplayName: Green
+  timerImage: {fileID: 670093871}
   borderImage: {fileID: 107160639}
   playerIndex: 1
   playerColor: {r: 0.39215687, g: 1, b: 0.5647059, a: 1}
   playerImage: {fileID: 107160639}
   playerName: {fileID: 1681758730}
+  timer: 0
+  isActivePlayer: 0
 --- !u!222 &21492721
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -276,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 60131432}
+  - component: {fileID: 60131435}
   - component: {fileID: 60131434}
   - component: {fileID: 60131433}
   m_Layer: 0
@@ -309,7 +313,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0e848fa2cc7229540b6f36d3a861fd9d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -405,9 +409,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 1336b1503eea10949923c0d821d6893c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -491,6 +495,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &60131435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60131431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fa2345935a52d42b229b24d91ecc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 60131434}
+  sound: {fileID: 60131433}
+  pictureSound: {fileID: 8300000, guid: 65fd7da9165a09140af40eb9d0e3c459, type: 3}
+  bubbleSound: {fileID: 8300000, guid: 0e848fa2cc7229540b6f36d3a861fd9d, type: 3}
+  diceSound: {fileID: 8300000, guid: 880e6af3a3610ee4091a7ced5f261c6b, type: 3}
+  congratsSound: {fileID: 8300000, guid: 6200071d0eef1234dbe8f51ad0b77ceb, type: 3}
+  isSoundOn: 1
 --- !u!1 &64859221
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,8 +774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0.88235295}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1086,6 +1109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116750637}
+  - component: {fileID: 116750638}
   m_Layer: 5
   m_Name: CongratsPopup
   m_TagString: Untagged
@@ -1116,6 +1140,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &116750638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116750636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c3b06e5a4f8034ebb2f2bf2614dc6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &143825182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1391,7 +1427,7 @@ GameObject:
   - component: {fileID: 252857372}
   - component: {fileID: 252857371}
   m_Layer: 5
-  m_Name: P1
+  m_Name: PlayerInfo1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1433,13 +1469,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 9027215757393332909, guid: dd89981f5cb74c94a9081cae81258ffd, type: 3}
   playerParent: {fileID: 461916140}
-  startPosition: {x: 0, y: 0}
-  timer: {fileID: 487261076}
+  startPosition: {x: -470, y: -950}
+  playerDisplayName: Red
+  timerImage: {fileID: 487261076}
   borderImage: {fileID: 201162434}
   playerIndex: 0
   playerColor: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
   playerImage: {fileID: 201162434}
   playerName: {fileID: 385298285}
+  timer: 0
+  isActivePlayer: 0
 --- !u!222 &252857372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2023,7 +2062,7 @@ GameObject:
   - component: {fileID: 317084641}
   - component: {fileID: 317084640}
   m_Layer: 5
-  m_Name: P4
+  m_Name: PlayerInfo4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2065,13 +2104,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 9027215757393332909, guid: dd89981f5cb74c94a9081cae81258ffd, type: 3}
   playerParent: {fileID: 461916140}
-  startPosition: {x: 0, y: 0}
-  timer: {fileID: 1416501166}
+  startPosition: {x: -405, y: -1010}
+  playerDisplayName: Yellow
+  timerImage: {fileID: 1416501166}
   borderImage: {fileID: 1340842161}
   playerIndex: 3
   playerColor: {r: 1, g: 0.9209943, b: 0.39215684, a: 1}
   playerImage: {fileID: 1340842161}
   playerName: {fileID: 443555673}
+  timer: 0
+  isActivePlayer: 0
 --- !u!222 &317084641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2255,7 +2297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d669b16b16102cf4f8c634a6188ec087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openNumbers: 0100000006000000
   playerCount: 2
+  playerTurnTimer: 10
+  totalPiecesInBoard: 72
   isSoundOn: 1
   isMusicOn: 1
   playerMovementSpeed: 1
@@ -2270,6 +2315,7 @@ MonoBehaviour:
     playerGender: 
     language: 0
   boardScreen: {fileID: 365783394}
+  audioManager: {fileID: 60131435}
 --- !u!1 &365783392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,11 +2370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d97ffb1ba632ab4d9076e307828eb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CUSTOMNUMBER: 1
+  useCustomNumber: 0
   board: {fileID: 94808725}
-  player1: {fileID: 252857371}
-  player2: {fileID: 21492720}
-  player3: {fileID: 1553642619}
-  player4: {fileID: 317084640}
+  playerInfo1: {fileID: 252857371}
+  playerInfo2: {fileID: 21492720}
+  playerInfo3: {fileID: 1553642619}
+  playerInfo4: {fileID: 317084640}
   diceImage: {fileID: 406437227}
   diceNumber: 1
   diceNumbers:
@@ -2338,6 +2386,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0e810054f219db64ba0f674189b6ec2a, type: 3}
   - {fileID: 21300000, guid: ddc7338b97f567145b986bd45bff0f29, type: 3}
   - {fileID: 21300000, guid: c2d7a495a61bdeb418b3b5a7689b115b, type: 3}
+  diceButton: {fileID: 0}
+  isDiceRolling: 0
   soundImage: {fileID: 725527202}
   soundOn: {fileID: 21300000, guid: ee1d0a81dc838704b97c5de9165c7e23, type: 3}
   soundOff: {fileID: 21300000, guid: e6cae27956df448479f8aa9f16d39249, type: 3}
@@ -2528,7 +2578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 1
+  m_text: Red
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2781,7 +2831,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.39215687}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2980,7 +3030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 4
+  m_text: Yellow
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3488,7 +3538,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.55
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -6705,7 +6755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 3
+  m_text: Blue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9622,7 +9672,7 @@ GameObject:
   - component: {fileID: 1553642620}
   - component: {fileID: 1553642619}
   m_Layer: 5
-  m_Name: P3
+  m_Name: PlayerInfo3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9664,13 +9714,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 9027215757393332909, guid: dd89981f5cb74c94a9081cae81258ffd, type: 3}
   playerParent: {fileID: 461916140}
-  startPosition: {x: 0, y: 0}
-  timer: {fileID: 405339453}
+  startPosition: {x: -470, y: -1010}
+  playerDisplayName: Blue
+  timerImage: {fileID: 405339453}
   borderImage: {fileID: 64859223}
   playerIndex: 2
   playerColor: {r: 0.39215684, g: 0.8784293, b: 1, a: 1}
   playerImage: {fileID: 64859223}
   playerName: {fileID: 988150307}
+  timer: 0
+  isActivePlayer: 0
 --- !u!222 &1553642620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10300,7 +10353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1644885874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 116750638}
+        m_TargetAssemblyTypeName: CongratsPopup, Assembly-CSharp
+        m_MethodName: Continue_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1644885872}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1644885874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10721,7 +10786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 2
+  m_text: Green
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

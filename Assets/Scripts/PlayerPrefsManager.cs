@@ -13,6 +13,9 @@ public class PlayerPrefsManager
     private readonly string playerGenderKey = "PlayerGender";
     private readonly string playerLanguageKey = "Language";
 
+    private readonly string soundKey = "Sound";
+    private readonly string musicKey = "Music";
+
     public void SavePlayerPref(string _name = "", string _age = "", string _gender = "")
     {
         playerName = string.IsNullOrWhiteSpace(_name) ? playerName : _name;
@@ -39,6 +42,5 @@ public class PlayerPrefsManager
         playerGender = PlayerPrefs.HasKey(playerGenderKey) ? PlayerPrefs.GetString(playerGenderKey) : "";
         language = PlayerPrefs.HasKey(playerLanguageKey) ? (GameManager.Language)PlayerPrefs.GetInt(playerLanguageKey) : GameManager.Language.English;
     }
-
 
 }

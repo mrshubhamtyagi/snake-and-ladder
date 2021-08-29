@@ -1,12 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public List<int> openNumbers = new List<int> { 1, 6 };
+
     public int playerCount = 2;
+    public int playerTurnTimer = 10;
+    public int totalPiecesInBoard = 72;
     public bool isSoundOn = true;
     public bool isMusicOn = true;
+
 
     [Header("-----Player Settings-----")]
     public float playerMovementSpeed = 1f;
@@ -21,8 +25,14 @@ public class GameManager : MonoBehaviour
 
     [Header("-----Other Refrences-----")]
     public BoardScreen boardScreen;
+    public AudioManager audioManager;
+
 
     public enum Language { English, Tamil };
+    public enum PlayerIndex { First, Second, Third, Fourth };
+
+    public static Player currentPlayer;
+    public static PlayerInfo currentPlayerInfo;
 
 
 
@@ -35,14 +45,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-
     void Start()
     {
         playerPrefs.ReadPlayerPrefs();
     }
 
-    void Update()
-    {
 
+    public delegate void OnPlayerTurn(PlayerIndex _index);
+    public static event OnPlayerTurn OnPlayerTurnEvent;
+    public void Call_OnPlayerTurn(PlayerIndex _index)
+    {
+        OnPlayerTurnEvent?.Invoke(_index);
     }
+
 }

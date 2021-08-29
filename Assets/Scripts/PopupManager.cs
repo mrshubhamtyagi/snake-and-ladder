@@ -58,11 +58,15 @@ public class PopupManager : MonoBehaviour
 
     public void ShowExitPopup()
     {
+        if (GameManager.currentPlayerInfo)
+            GameManager.currentPlayerInfo.isActivePlayer = false;
         UIManager.Instance.EnterTween(exitPopup.transform, UIManager.ScreenType.Popup);
     }
 
     public void HideExitPopup()
     {
+        if (GameManager.currentPlayerInfo)
+            GameManager.currentPlayerInfo.isActivePlayer = true;
         UIManager.Instance.ExitTween(exitPopup.transform, UIManager.isComingFromGameScreen ? UIManager.ScreenType.Game : UIManager.ScreenType.Home);
     }
 

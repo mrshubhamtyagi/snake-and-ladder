@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,49 +10,108 @@ public class PlayerInfo : MonoBehaviour
     public GameObject playerPrefab;
     public Transform playerParent;
     public Vector2 startPosition;
-    public Image timer;
+    public string playerDisplayName;
+    public Image timerImage;
     public Image borderImage;
 
 
     [Header("-----Other References-----")]
-    public PlayerIndex playerIndex;
+    public GameManager.PlayerIndex playerIndex;
     public Color playerColor;
     public Image playerImage;
     public TextMeshProUGUI playerName;
+    public float timer;
+    private float inSeconds;
+    public bool isActivePlayer = false;
 
 
-    public enum PlayerIndex { First, Second, Third, Fourth };
 
-    void Start()
+    private Player playerScript;
+    private float downScale = 0.75f;
+
+
+
+
+    void OnEnable()
     {
-        
+        GameManager.OnPlayerTurnEvent += Event_OnPlayerTurn;
     }
 
-    public void SetPlayer(Sprite _image, string _name)
+    private void OnDisable()
+    {
+        GameManager.OnPlayerTurnEvent -= Event_OnPlayerTurn;
+    }
+
+    public void SetPlayer(Sprite _image, bool _isActivePlayer = false)
     {
         //playerImage.sprite = _image;
-        playerName.text = _name;
-        Player _player = Instantiate(playerPrefab, playerParent).GetComponent<Player>();
-        _player.gameObject.name = _name;
-        _player.GetComponent<Image>().color = playerColor;
-        _player.transform.localPosition = BoardManager.Instance.piecesPositions[0];
-        _player.playerInfo = this;
+        playerName.text = playerDisplayName;
+        playerScript = playerParent.childCount >= (int)playerIndex + 1 ? playerParent.GetChild((int)playerIndex).GetComponent<Player>() : Instantiate(playerPrefab, playerParent).GetComponent<Player>();
+        playerScript.gameObject.name = playerDisplayName;
+        playerScript.transform.GetChild(0).GetComponent<Image>().color = playerColor;
+        playerScript.transform.localPosition = startPosition;
+        playerScript.playerInfo = this;
+        playerScript.currentPieceNumber = 0;
+        playerScript.hasPlayerStarted = false;
+        playerScript.isPlayerMoving = false;
+
+        timerImage.fillAmount = timer = inSeconds = 0;
+        isActivePlayer = _isActivePlayer;
+        borderImage.transform.localScale = isActivePlayer ? Vector3.one : Vector3.one * downScale;
+        if (isActivePlayer)
+        {
+            GameManager.currentPlayer = playerScript;
+            GameManager.currentPlayerInfo = this;
+        }
     }
 
     void Update()
     {
+        if (!isActivePlayer || playerScript.isPlayerMoving || GameManager.Instance.boardScreen.isDiceRolling)
+            return;
 
+        if (inSeconds > GameManager.Instance.playerTurnTimer)
+        {
+            OnPlayerTurnOver();
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            inSeconds = timer % 60;
+            timerImage.fillAmount = inSeconds / GameManager.Instance.playerTurnTimer;
+        }
     }
 
-    public void OnPlayerTurn()
+    public void Event_OnPlayerTurn(GameManager.PlayerIndex _index)
     {
-        borderImage.color = Color.black;
+        //print(playerIndex + "<-CURRENT OnPlayerTurn NEXT-> " + _index);
+        if (playerIndex == _index)
+        {
+            isActivePlayer = true;
+            borderImage.transform.localScale = Vector3.one;
+            GameManager.currentPlayer = playerScript;
+            GameManager.currentPlayerInfo = this;
+        }
+        else
+        {
+            borderImage.transform.localScale = Vector3.one * downScale;
+        }
     }
 
     public void OnPlayerTurnOver()
     {
-        timer.fillAmount = 0;
-        borderImage.color = Color.white;
+        timerImage.fillAmount = timer = inSeconds = 0;
+        isActivePlayer = false;
+        borderImage.transform.localScale = Vector3.one;
+        //borderImage.color = Color.white;
+
+
+        // Set Next Player Turn
+        int _nextPlayerIndex = ((int)playerIndex + 1) % GameManager.Instance.playerCount;
+        print("NEXT PLAYER -> " + (_nextPlayerIndex + 1));
+        GameManager.Instance.Call_OnPlayerTurn((GameManager.PlayerIndex)_nextPlayerIndex);
+        GameManager.Instance.boardScreen.diceButton.interactable = true;
     }
+
 
 }

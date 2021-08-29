@@ -10,6 +10,7 @@ public class ExitPopup : MonoBehaviour
 
     public void Yes_Click(Transform _transform)
     {
+        GameManager.Instance.audioManager.PlayBubbleSound();
         if (!UIManager.isComingFromGameScreen)
         {
             print("Application Quit");
@@ -25,6 +26,7 @@ public class ExitPopup : MonoBehaviour
 
     public void No_Click(Transform _transform)
     {
+        GameManager.Instance.audioManager.PlayBubbleSound();
         UIManager.Instance.ButtonTween(_transform);
         UIManager.Instance.popupManager.HideExitPopup();
     }
