@@ -45,15 +45,15 @@ public class PlayerInfo : MonoBehaviour
     public void SetPlayer(Sprite _image, bool _isActivePlayer = false)
     {
         //playerImage.sprite = _image;
+        print("SetPlayer_" + playerDisplayName);
         playerName.text = playerDisplayName;
         playerScript = playerParent.childCount >= (int)playerIndex + 1 ? playerParent.GetChild((int)playerIndex).GetComponent<Player>() : Instantiate(playerPrefab, playerParent).GetComponent<Player>();
         playerScript.gameObject.name = playerDisplayName;
         playerScript.transform.GetChild(0).GetComponent<Image>().color = playerColor;
-        playerScript.transform.localPosition = startPosition;
         playerScript.playerInfo = this;
+        playerScript.transform.localPosition = startPosition;
         playerScript.currentPieceNumber = 0;
-        playerScript.hasPlayerStarted = false;
-        playerScript.isPlayerMoving = false;
+        playerScript.hasPlayerStarted = playerScript.isPlayerMoving = false;
 
         timerImage.fillAmount = timer = inSeconds = 0;
         isActivePlayer = _isActivePlayer;

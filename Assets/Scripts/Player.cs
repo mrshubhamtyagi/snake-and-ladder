@@ -7,16 +7,16 @@ public class Player : MonoBehaviour
 {
     public PlayerInfo playerInfo;
     public bool isPlayerMoving = false;
-    public int currentPosition = 1;
+    //public int currentPosition = 1;
 
-    public int stepsCount = 1;
-    public int moveTo = 1;
+    //public int stepsCount = 1;
+    //public int moveTo = 1;
 
     public int currentPieceNumber;
     public bool hasPlayerStarted = false;
 
-    private int _stepsRemainaing = 0;
-    public int max = 100;
+    //private int _stepsRemainaing = 0;
+    //public int max = 100;
 
 
 
@@ -25,63 +25,58 @@ public class Player : MonoBehaviour
         currentPieceNumber = 0;
     }
 
-    [ContextMenu("MovePlayerTo")]
-    public void MovePlayerTo()
-    {
-        if (currentPosition == moveTo || currentPosition > moveTo - 1)
-            return;
+    //[ContextMenu("MovePlayerTo")]
+    //public void MovePlayerTo()
+    //{
+    //    if (currentPosition == moveTo || currentPosition > moveTo - 1)
+    //        return;
 
-        isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[++currentPosition], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
-          {
-              if (currentPosition == moveTo || currentPosition > moveTo - 1)
-                  isPlayerMoving = false;
-              else
-                  MovePlayerTo();
-          });
-    }
+    //    isPlayerMoving = true;
+    //    transform.DOLocalMove(BoardManager.Instance.piecesPositions[++currentPosition], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+    //      {
+    //          if (currentPosition == moveTo || currentPosition > moveTo - 1)
+    //              isPlayerMoving = false;
+    //          else
+    //              MovePlayerTo();
+    //      });
+    //}
 
 
-    [ContextMenu("MovePlayerBySteps")]
-    public void MovePlayerBySteps()
-    {
-        if (stepsCount == 0)
-            return;
+    //[ContextMenu("MovePlayerBySteps")]
+    //public void MovePlayerBySteps()
+    //{
+    //    if (stepsCount == 0)
+    //        return;
 
-        //if (!hasPlayerStarted)
-        //{
-        //    hasPlayerStarted = true;
-        //    stepsCount++;
-        //}
+    //    //if (!hasPlayerStarted)
+    //    //{
+    //    //    hasPlayerStarted = true;
+    //    //    stepsCount++;
+    //    //}
 
-        isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPosition], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
-        {
-            currentPosition++;
-            if (--stepsCount > 0)
-                MovePlayerBySteps();
-            else
-            {
-                playerInfo.OnPlayerTurnOver();
-                isPlayerMoving = false;
-            }
-        });
-    }
+    //    isPlayerMoving = true;
+    //    transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPosition], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+    //    {
+    //        currentPosition++;
+    //        if (--stepsCount > 0)
+    //            MovePlayerBySteps();
+    //        else
+    //        {
+    //            playerInfo.OnPlayerTurnOver();
+    //            isPlayerMoving = false;
+    //        }
+    //    });
+    //}
+
+
     public void MovePlayerBySteps(int _steps)
     {
-        if (_steps == 0)
-            return;
-
-        //if (!hasPlayerStarted)
-        //{
-        //hasPlayerStarted = true;
-        //_steps++;
-        //}
+        print("MovePlayerBySteps");
 
         isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPosition], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+        transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPieceNumber], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
-            currentPosition++;
+            //currentPosition++;
             if (--_steps > 0)
                 MovePlayerBySteps(_steps);
             else
@@ -102,7 +97,7 @@ public class Player : MonoBehaviour
         isPlayerMoving = true;
         transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
-            currentPosition = _number;
+            //currentPosition = _number;
             isPlayerMoving = false;
         });
     }

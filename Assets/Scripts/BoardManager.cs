@@ -9,6 +9,7 @@ public class BoardManager : MonoBehaviour
     public int[] picturesNumbers;
     public Vector2[] jumpNumbers; // x: piece number, y: to jump piece number
     public Vector2[] piecesPositions;
+    public Texture2D[] avatars;
 
 
     public static BoardManager Instance;
@@ -24,6 +25,7 @@ public class BoardManager : MonoBehaviour
 
     private void InitializePieces()
     {
+        int _avatarIndex = 0;
         BoardPiece _piece;
         for (int i = 0; i < totalPieces; i++)
         {
@@ -65,10 +67,14 @@ public class BoardManager : MonoBehaviour
                 if (i + 1 == item)
                 {
                     _piece.hasPicture = true;
+                    _piece.avatarIndex = _avatarIndex++;
                     break;
                 }
                 else
+                {
+                    _piece.avatarIndex = -1;
                     _piece.hasPicture = false;
+                }
             }
         }
     }

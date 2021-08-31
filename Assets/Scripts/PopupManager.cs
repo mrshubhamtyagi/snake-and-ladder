@@ -7,6 +7,7 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private GameObject profilePopup;
     [SerializeField] private GameObject exitPopup;
     [SerializeField] private GameObject congratsPopup;
+    [SerializeField] private GameObject avatarPopup;
 
     [Header("-----Toast-----")]
     public GameObject toast;
@@ -82,6 +83,16 @@ public class PopupManager : MonoBehaviour
         UIManager.Instance.ExitTween(congratsPopup.transform, UIManager.ScreenType.Home);
     }
 
+
+    public void ShowAvatarPopup()
+    {
+        UIManager.Instance.EnterTween(avatarPopup.transform, UIManager.ScreenType.Popup);
+    }
+
+    public void HideAvatarPopup()
+    {
+        UIManager.Instance.ExitTween(avatarPopup.transform, UIManager.ScreenType.Game);
+    }
 
     public void ShowToast(string _msg, Color _color, int _holdTime = 2)
     {

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardPiece : MonoBehaviour
@@ -7,9 +6,11 @@ public class BoardPiece : MonoBehaviour
     public int pieceNumber;
     public bool hasJump = false;
     public int jumpToNumber;
-    public bool hasPicture = false;
     public bool isFirstPiece = false;
     public bool isLastPiece = false;
+
+    public bool hasPicture = false;
+    public int avatarIndex;
 
     public bool hasPlayer = false;
     [SerializeField] private int totalPlayersOnThisPiece = 0;
@@ -71,8 +72,17 @@ public class BoardPiece : MonoBehaviour
         else
         {
             print("Picture Case");
+            GameManager.currentPlayerInfo.isActivePlayer = false;
             GameManager.Instance.audioManager.PlayPictureSound();
 
+            GameManager.Instance.currentAvatarIndex = avatarIndex;
+            UIManager.Instance.popupManager.ShowAvatarPopup();
+            yield return new WaitForSeconds(3);
+            UIManager.Instance.popupManager.HideAvatarPopup();
+            yield return new WaitForSeconds(0.25f);
+            GameManager.currentPlayerInfo.isActivePlayer = true;
+            GameManager.Instance.currentAvatarIndex = -1;
         }
     }
+
 }

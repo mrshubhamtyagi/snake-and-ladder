@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int playerCount = 2;
     public int playerTurnTimer = 10;
     public int totalPiecesInBoard = 72;
+    public int currentAvatarIndex = -1;
     public bool isSoundOn = true;
     public bool isMusicOn = true;
 

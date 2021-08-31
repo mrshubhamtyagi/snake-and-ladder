@@ -31,6 +31,7 @@ public class BoardScreen : MonoBehaviour
     [SerializeField] private Sprite musicOff;
 
 
+
     void Start()
     {
         diceButton = diceImage.GetComponent<Button>();
@@ -83,6 +84,7 @@ public class BoardScreen : MonoBehaviour
     public void DeInitializeGame()
     {
         playerInfo1.gameObject.SetActive(false);
+        playerInfo1.gameObject.SetActive(false);
         playerInfo2.gameObject.SetActive(false);
         playerInfo3.gameObject.SetActive(false);
         playerInfo4.gameObject.SetActive(false);
@@ -116,7 +118,8 @@ public class BoardScreen : MonoBehaviour
             diceNumber = CUSTOMNUMBER;
             diceImage.sprite = diceNumbers[CUSTOMNUMBER - 1];
         }
-        print("Dice Numner = " + diceNumber);
+
+        print("Dice Number = " + diceNumber);
         yield return new WaitForSeconds(0.25f);
 
         if (!GameManager.currentPlayer.hasPlayerStarted && !GameManager.Instance.openNumbers.Contains(diceNumber))
@@ -139,8 +142,8 @@ public class BoardScreen : MonoBehaviour
 
         isDiceRolling = false;
         GameManager.currentPlayer.hasPlayerStarted = true;
-        GameManager.currentPlayer.MovePlayerBySteps(diceNumber);
         print(GameManager.currentPlayer.playerInfo.playerDisplayName);
+        GameManager.currentPlayer.MovePlayerBySteps(diceNumber);
     }
 
 
