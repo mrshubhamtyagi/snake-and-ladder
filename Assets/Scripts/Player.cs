@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
     public void JumpPlayerTo(int _number)
     {
         isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+        transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed * 0.3f).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
             //currentPosition = _number;
             isPlayerMoving = false;

@@ -15,6 +15,13 @@ public class BoardScreen : MonoBehaviour
     public PlayerInfo playerInfo3;
     public PlayerInfo playerInfo4;
 
+    [Header("-----Player Info Positions-----")]
+    public Vector2 playerInfoPositionFarLeft;
+    public Vector2 playerInfoPositionLeft;
+    public Vector2 playerInfoPositionRight;
+    public Vector2 playerInfoPositionFarRight;
+
+
     [Header("-----Dice-----")]
     public Image diceImage;
     public int diceNumber = 1;
@@ -53,29 +60,29 @@ public class BoardScreen : MonoBehaviour
         {
             case 2:
                 playerInfo1.gameObject.SetActive(true);
-                playerInfo1.SetPlayer(null, true);
+                playerInfo1.SetPlayer(null, playerInfoPositionRight, true);
                 playerInfo2.gameObject.SetActive(true);
-                playerInfo2.SetPlayer(null);
+                playerInfo2.SetPlayer(null, playerInfoPositionFarRight);
                 break;
 
             case 3:
                 playerInfo1.gameObject.SetActive(true);
-                playerInfo1.SetPlayer(null, true);
+                playerInfo1.SetPlayer(null, playerInfoPositionLeft, true);
                 playerInfo2.gameObject.SetActive(true);
-                playerInfo2.SetPlayer(null);
+                playerInfo2.SetPlayer(null, playerInfoPositionRight);
                 playerInfo3.gameObject.SetActive(true);
-                playerInfo3.SetPlayer(null);
+                playerInfo3.SetPlayer(null, playerInfoPositionFarRight);
                 break;
 
             case 4:
                 playerInfo1.gameObject.SetActive(true);
-                playerInfo1.SetPlayer(null, true);
+                playerInfo1.SetPlayer(null, playerInfoPositionFarLeft, true);
                 playerInfo2.gameObject.SetActive(true);
-                playerInfo2.SetPlayer(null);
+                playerInfo2.SetPlayer(null, playerInfoPositionLeft);
                 playerInfo3.gameObject.SetActive(true);
-                playerInfo3.SetPlayer(null);
+                playerInfo3.SetPlayer(null, playerInfoPositionRight);
                 playerInfo4.gameObject.SetActive(true);
-                playerInfo4.SetPlayer(null);
+                playerInfo4.SetPlayer(null, playerInfoPositionFarRight);
                 break;
         }
         diceButton.interactable = true;
@@ -141,8 +148,15 @@ public class BoardScreen : MonoBehaviour
         }
 
         isDiceRolling = false;
-        GameManager.currentPlayer.hasPlayerStarted = true;
         print(GameManager.currentPlayer.playerInfo.playerDisplayName);
+
+        if (!GameManager.currentPlayer.hasPlayerStarted && diceNumber == 6)
+        {
+            print("6 case ------" + diceImage);
+            diceNumber = 1;
+        }
+
+        GameManager.currentPlayer.hasPlayerStarted = true;
         GameManager.currentPlayer.MovePlayerBySteps(diceNumber);
     }
 

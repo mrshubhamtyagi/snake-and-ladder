@@ -42,10 +42,11 @@ public class PlayerInfo : MonoBehaviour
         GameManager.OnPlayerTurnEvent -= Event_OnPlayerTurn;
     }
 
-    public void SetPlayer(Sprite _image, bool _isActivePlayer = false)
+    public void SetPlayer(Sprite _image, Vector2 _playerInfoPosition, bool _isActivePlayer = false)
     {
         //playerImage.sprite = _image;
         print("SetPlayer_" + playerDisplayName);
+        GetComponent<RectTransform>().localPosition = _playerInfoPosition;
         playerName.text = playerDisplayName;
         playerScript = playerParent.childCount >= (int)playerIndex + 1 ? playerParent.GetChild((int)playerIndex).GetComponent<Player>() : Instantiate(playerPrefab, playerParent).GetComponent<Player>();
         playerScript.gameObject.name = playerDisplayName;
