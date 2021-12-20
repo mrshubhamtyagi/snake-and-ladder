@@ -87,22 +87,26 @@ public class BoardPiece : MonoBehaviour
 
         if (hasJump)
         {
-            print("Jump Case");
+            print(_player.transform.localPosition + "<-from---Jump Case---to->" + BoardManager.Instance.piecesPositions[jumpToNumber - 1]);
             _player.JumpPlayerTo(jumpToNumber - 1);
+            //_player.JumpPlayerTo(BoardManager.Instance.piecesPositions[jumpToNumber - 1]);
         }
         else
         {
             print("Picture Case");
             GameManager.currentPlayerInfo.isActivePlayer = false;
-            GameManager.Instance.audioManager.PlayPictureSound();
+            //GameManager.Instance.audioManager.PlayPictureSound();
 
             GameManager.Instance.currentAvatarIndex = avatarIndex;
             UIManager.Instance.popupManager.ShowAvatarPopup();
-            yield return new WaitForSeconds(3);
-            UIManager.Instance.popupManager.HideAvatarPopup();
-            yield return new WaitForSeconds(0.25f);
-            GameManager.currentPlayerInfo.isActivePlayer = true;
-            GameManager.Instance.currentAvatarIndex = -1;
+            //yield return new WaitForSeconds(GameManager.Instance.audioManager.GetPictureClipLength(GameManager.Instance.currentAvatarIndex));
+            //if (GameManager.Instance.isAvatarPopupOpen)
+            //{
+            //    UIManager.Instance.popupManager.HideAvatarPopup();
+            //    yield return new WaitForSeconds(0.25f);
+            //    GameManager.currentPlayerInfo.isActivePlayer = true;
+            //    GameManager.Instance.currentAvatarIndex = -1;
+            //}
         }
 
         yield return new WaitForSeconds(0.1f);
@@ -114,7 +118,7 @@ public class BoardPiece : MonoBehaviour
     {
         yield return new WaitUntil(() => !_player.isPlayerMoving);
 
-        print("New Position Case");
-        _player.transform.localPosition = playerPositions[totalPlayersOnThisPiece-1];
+        //print("New Position Case");
+        _player.transform.localPosition = playerPositions[totalPlayersOnThisPiece - 1];
     }
 }

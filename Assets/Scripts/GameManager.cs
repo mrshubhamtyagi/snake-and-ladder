@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int currentAvatarIndex = -1;
     public bool isSoundOn = true;
     public bool isMusicOn = true;
+    //public bool isAvatarPopupOpen = false;
 
 
     [Header("-----Player Settings-----")]

@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     public void MovePlayerBySteps(int _steps)
     {
-        print("MovePlayerBySteps");
+        //print("MovePlayerBySteps");
 
         isPlayerMoving = true;
         transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPieceNumber], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
@@ -89,13 +89,13 @@ public class Player : MonoBehaviour
 
     public void JumpPlayerTo(Vector2 _position)
     {
-        transform.DOLocalMove(_position, 1);
+        transform.DOLocalMove(_position, 2);
     }
 
     public void JumpPlayerTo(int _number)
     {
         isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed * 0.3f).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+        transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed * 2.5f).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
             //currentPosition = _number;
             isPlayerMoving = false;

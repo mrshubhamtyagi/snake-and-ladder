@@ -41,6 +41,8 @@ public class BoardScreen : MonoBehaviour
 
     void Start()
     {
+        useCustomNumber = Application.isEditor;
+
         diceButton = diceImage.GetComponent<Button>();
         //SetBoardSizeBaseOnScreenResolution(Screen.currentResolution);
         DeInitializeGame();
@@ -126,7 +128,7 @@ public class BoardScreen : MonoBehaviour
             diceImage.sprite = diceNumbers[CUSTOMNUMBER - 1];
         }
 
-        print("Dice Number = " + diceNumber);
+        //print("Dice Number = " + diceNumber);
         yield return new WaitForSeconds(0.25f);
 
         if (!GameManager.currentPlayer.hasPlayerStarted && !GameManager.Instance.openNumbers.Contains(diceNumber))
@@ -148,7 +150,7 @@ public class BoardScreen : MonoBehaviour
         }
 
         isDiceRolling = false;
-        print(GameManager.currentPlayer.playerInfo.playerDisplayName);
+        //print(GameManager.currentPlayer.playerInfo.playerDisplayName);
 
         if (!GameManager.currentPlayer.hasPlayerStarted && diceNumber == 6)
         {

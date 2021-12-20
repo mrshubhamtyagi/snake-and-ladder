@@ -109,7 +109,7 @@ public class PlayerInfo : MonoBehaviour
 
         // Set Next Player Turn
         int _nextPlayerIndex = ((int)playerIndex + 1) % GameManager.Instance.playerCount;
-        print("NEXT PLAYER -> " + (_nextPlayerIndex + 1));
+        //print("NEXT PLAYER -> " + (_nextPlayerIndex + 1));
         GameManager.Instance.Call_OnPlayerTurn((GameManager.PlayerIndex)_nextPlayerIndex);
         GameManager.Instance.boardScreen.diceButton.interactable = true;
     }
