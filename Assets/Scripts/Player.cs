@@ -74,7 +74,8 @@ public class Player : MonoBehaviour
         //print("MovePlayerBySteps");
 
         isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[currentPieceNumber], GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+        Vector3 _piecesPosition = GameManager.Instance.isIpad ? BoardManager.Instance.piecesPositionsForIpad[currentPieceNumber] : BoardManager.Instance.piecesPositions[currentPieceNumber];
+        transform.DOLocalMove(_piecesPosition, GameManager.Instance.playerMovementSpeed).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
             //currentPosition++;
             if (--_steps > 0)
@@ -95,7 +96,8 @@ public class Player : MonoBehaviour
     public void JumpPlayerTo(int _number)
     {
         isPlayerMoving = true;
-        transform.DOLocalMove(BoardManager.Instance.piecesPositions[_number], GameManager.Instance.playerMovementSpeed * 2.5f).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
+        Vector3 _piecesPosition = GameManager.Instance.isIpad ? BoardManager.Instance.piecesPositionsForIpad[_number] : BoardManager.Instance.piecesPositions[_number];
+        transform.DOLocalMove(_piecesPosition, GameManager.Instance.playerMovementSpeed * 2.5f).SetEase(GameManager.Instance.playerEasyType).OnComplete(delegate
         {
             //currentPosition = _number;
             isPlayerMoving = false;

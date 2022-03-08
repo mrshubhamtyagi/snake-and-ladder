@@ -20,6 +20,7 @@ public class AvatarPopup : MonoBehaviour
         {
             avatarImage.texture = BoardManager.Instance.avatars[GameManager.Instance.currentAvatarIndex];
             GameManager.Instance.audioManager.PlayPictureSound(GameManager.Instance.currentAvatarIndex);
+            avatarImage.transform.localScale = GameManager.Instance.isIpad ? Vector3.one * 0.8f : Vector3.one;
             StartCoroutine("Co_HidePopup");
         }
         else

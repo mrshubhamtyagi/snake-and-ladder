@@ -17,10 +17,11 @@ public class BoardPiece : MonoBehaviour
     [SerializeField] private int totalPlayersOnThisPiece = 0;
 
 
-    List<Vector2> playerPositions = new List<Vector2>();
+    [SerializeField] List<Vector2> playerPositions = new List<Vector2>();
 
     void Start()
     {
+        //transform.localScale = GameManager.Instance.isIpad? Vector3.one * 0.5f: Vector3.one;
         SetPieceInfo();
         SetupAlternatePositions();
     }
@@ -32,11 +33,11 @@ public class BoardPiece : MonoBehaviour
 
     private void SetupAlternatePositions()
     {
-        Vector2 centerPosition = BoardManager.Instance.piecesPositions[pieceNumber - 1];
-        Vector2 topLeftCorner = new Vector2(centerPosition.x - 30, centerPosition.y + 30);
-        Vector2 topRightCorner = new Vector2(centerPosition.x + 30, centerPosition.y + 30);
-        Vector2 bottmRightCorner = new Vector2(centerPosition.x + 30, centerPosition.y - 30);
-        Vector2 bottomLeftCorner = new Vector2(centerPosition.x - 30, centerPosition.y - 30);
+        Vector2 centerPosition = GameManager.Instance.isIpad ? BoardManager.Instance.piecesPositionsForIpad[pieceNumber - 1] : BoardManager.Instance.piecesPositions[pieceNumber - 1];
+        Vector2 topLeftCorner = new Vector2(centerPosition.x - 10, centerPosition.y + 10);
+        Vector2 topRightCorner = new Vector2(centerPosition.x + 10, centerPosition.y + 10);
+        Vector2 bottmRightCorner = new Vector2(centerPosition.x + 10, centerPosition.y - 10);
+        Vector2 bottomLeftCorner = new Vector2(centerPosition.x - 10, centerPosition.y - 10);
 
         playerPositions.Add(centerPosition);
         playerPositions.Add(topRightCorner);

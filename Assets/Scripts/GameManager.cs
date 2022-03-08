@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isSoundOn = true;
     public bool isMusicOn = true;
     //public bool isAvatarPopupOpen = false;
+    public bool isIpad = false;
 
 
     [Header("-----Player Settings-----")]
@@ -45,6 +46,12 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        print("Device Model : " + SystemInfo.deviceModel.ToLower());
+        isIpad = SystemInfo.deviceModel.ToLower().Contains("ipad");
+
+        if (Application.isEditor)
+            isIpad = true;
     }
 
     void Start()

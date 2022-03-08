@@ -10,6 +10,7 @@ public class PlayerInfo : MonoBehaviour
     public GameObject playerPrefab;
     public Transform playerParent;
     public Vector2 startPosition;
+    public Vector2 startPositionForIpad;
     public string playerDisplayName;
     public Image timerImage;
     public Image borderImage;
@@ -52,7 +53,8 @@ public class PlayerInfo : MonoBehaviour
         playerScript.gameObject.name = playerDisplayName;
         playerScript.transform.GetChild(0).GetComponent<Image>().color = playerColor;
         playerScript.playerInfo = this;
-        playerScript.transform.localPosition = startPosition;
+        playerScript.transform.localPosition = GameManager.Instance.isIpad ? startPositionForIpad : startPosition;
+        playerScript.transform.localScale = GameManager.Instance.isIpad ? Vector3.one * .7f : Vector3.one;
         playerScript.currentPieceNumber = 0;
         playerScript.hasPlayerStarted = playerScript.isPlayerMoving = false;
 

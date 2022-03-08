@@ -9,6 +9,7 @@ public class BoardManager : MonoBehaviour
     public int[] picturesNumbers;
     public Vector2[] jumpNumbers; // x: piece number, y: to jump piece number
     public Vector2[] piecesPositions;
+    public Vector2[] piecesPositionsForIpad;
     public Texture2D[] avatars;
 
 
@@ -34,7 +35,8 @@ public class BoardManager : MonoBehaviour
             _piece.pieceNumber = i + 1;
 
             // Position
-            _piece.transform.localPosition = piecesPositions[i];
+            _piece.transform.localPosition = GameManager.Instance.isIpad ? piecesPositionsForIpad[i] : piecesPositions[i];
+            _piece.transform.localScale = GameManager.Instance.isIpad ? Vector3.one * 0.5f : Vector3.one;
 
             // First or Last
             if (i == 0) _piece.isFirstPiece = true;
@@ -78,20 +80,4 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}
-
-
-[System.Serializable]
-public class SpecialPieceInfo
-{
-    public string pieceName;
-    public AudioClip audioClip;
-
 }
